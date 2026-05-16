@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Will You Be My Valentine? 💕</title>
+    <title>Happy Birthday, My Love! 🎂💕</title>
     <!-- Menambahkan html2canvas agar fitur screenshot berfungsi -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
@@ -22,7 +22,7 @@
             cursor: none;
         }
 
-        /* Floating hearts and sparkles */
+        /* Floating hearts, cakes, and sparkles */
         .floating-elements {
             position: fixed;
             top: 0;
@@ -33,7 +33,7 @@
             z-index: 1;
         }
 
-        .heart, .sparkle {
+        .heart, .sparkle, .cake {
             position: absolute;
             font-size: 20px;
             animation: float 6s infinite linear;
@@ -77,7 +77,7 @@
             padding: 20px;
         }
 
-        .proposal-section {
+        .birthday-section {
             max-width: 600px;
             animation: fadeInUp 1s ease-out;
         }
@@ -317,38 +317,41 @@
 
     <!-- Main Container -->
     <div class="container">
-        <!-- Proposal Section -->
-        <div class="proposal-section" id="proposalSection">
-            <h1>💕 Will Maisyafa be my Valentine? 💕</h1>
+        <!-- Birthday Proposal Section -->
+        <div class="birthday-section" id="birthdaySection">
+            <h1>🎂 Selamat Ulang Tahun, Maisyafa! 💕</h1>
+            <p style="color: white; font-size: 1.3rem; margin-bottom: 30px; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);">
+                Hari ini adalah hari paling spesial karena kamu lahir ke dunia. Mau merayakan hari bahagiamu bareng aku? ✨
+            </p>
             <div class="buttons">
-                <button class="yes-btn" id="yesBtn">YES! 💖</button>
-                <button class="no-btn" id="noBtn">NO 😢</button>
+                <button class="yes-btn" id="yesBtn">MAU BANGET! 💖</button>
+                <button class="no-btn" id="noBtn">Gak Mau 😢</button>
             </div>
         </div>
 
         <!-- Questions Section -->
         <div class="questions-section" id="questionsSection">
             <div class="question active" data-question="1">
-                <h2>🌹 Kapan kita bersama?</h2>
+                <h2>🎂 Kapan kita tiup lilin bareng?</h2>
                 <input type="date" id="dateInput">
                 <button class="next-btn" onclick="nextQuestion()">Next 💕</button>
             </div>
             <div class="question" data-question="2">
-                <h2>🎬 Nonton film apa bareng?</h2>
-                <select id="movieInput">
-                    <option value="">Pilih film favoritmu...</option>
-                    <option value="Titanic">Titanic 💕</option>
-                    <option value="The Notebook">The Notebook 💌</option>
-                    <option value="La La Land">La La Land 🌹</option>
-                    <option value="Your Name">Your Name ✨</option>
-                    <option value="Lainnya">Lainnya (ketik sendiri)</option>
+                <h2>🍰 Mau kue ulang tahun rasa apa?</h2>
+                <select id="cakeInput">
+                    <option value="">Pilih rasa favoritmu...</option>
+                    <option value="Cokelat Melt">Double Chocolate 🍫</option>
+                    <option value="Red Velvet">Red Velvet 🌹</option>
+                    <option value="Matcha">Matcha Green Tea 🍵</option>
+                    <option value="Cheese Cake">Strawberry Cheesecake 🍓</option>
+                    <option value="Lainnya">Request Rasa Lain (ketik sendiri)</option>
                 </select>
-                <input type="text" id="customMovie" placeholder="Film favoritmu..." style="display: none; margin-top: 10px;">
+                <input type="text" id="customCake" placeholder="Rasa kue impianmu..." style="display: none; margin-top: 10px;">
                 <button class="next-btn" onclick="nextQuestion()">Next 💕</button>
             </div>
             <div class="question" data-question="3">
-                <h2>✈️ Liburan ke mana depan?</h2>
-                <input type="text" id="travelInput" placeholder="Bali? Jepang? Paris? 💭">
+                <h2>🎁 Kado apa yang paling kamu pengen?</h2>
+                <input type="text" id="giftInput" placeholder="Sebutin aja, nanti aku kabulin! 💭">
                 <button class="next-btn" onclick="showFinalScreen()">Selesai! 💖</button>
             </div>
         </div>
@@ -359,10 +362,10 @@
                 <!-- Summary will be populated here -->
             </div>
             <div class="love-message">
-                Aku nggak salah pilih kamu, Maisyafa! 
-                <br>💕 Kita bakal bahagia bareng! 💕
+                Terima kasih sudah lahir ke dunia dan jadi bagian terindah di hidupku, Maisyafa! 
+                <br>💕 Semoga semua impianmu terwujud bersamaku! 💕
             </div>
-            <button class="screenshot-btn" onclick="captureScreenshot()">💾 Save this memory</button>
+            <button class="screenshot-btn" onclick="captureScreenshot()">💾 Save This Birthday Memory</button>
         </div>
     </div>
 
@@ -389,13 +392,14 @@
             moveNoButton();
         });
 
-        // Create floating hearts and sparkles
+        // Create floating hearts, sparkles, and cakes
         function createFloatingElements() {
             const container = document.getElementById('floatingElements');
-            for (let i = 0; i < 20; i++) {
+            const items = ['💖', '✨', '🎂', '🎈', '🎁'];
+            for (let i = 0; i < 25; i++) {
                 const element = document.createElement('div');
-                element.innerHTML = Math.random() > 0.5 ? '💖' : '✨';
-                element.className = Math.random() > 0.5 ? 'heart' : 'sparkle';
+                element.innerHTML = items[Math.floor(Math.random() * items.length)];
+                element.className = 'heart';
                 element.style.left = Math.random() * 100 + '%';
                 element.style.animationDelay = Math.random() * 6 + 's';
                 element.style.animationDuration = (Math.random() * 3 + 4) + 's';
@@ -425,7 +429,7 @@
         document.getElementById('yesBtn').addEventListener('click', function() {
             celebrate();
             setTimeout(() => {
-                document.getElementById('proposalSection').classList.add('hidden');
+                document.getElementById('birthdaySection').classList.add('hidden');
                 document.getElementById('questionsSection').style.display = 'block';
                 document.querySelector('.question[data-question="1"]').classList.add('active');
             }, 2000);
@@ -444,11 +448,11 @@
             
             if (input.id === 'dateInput') {
                 answers.date = input.value;
-            } else if (input.id === 'movieInput') {
-                answers.movie = document.getElementById('customMovie').style.display === 'block' ? 
-                    document.getElementById('customMovie').value : input.value;
-            } else if (input.id === 'travelInput') {
-                answers.travel = input.value;
+            } else if (input.id === 'cakeInput') {
+                answers.cake = document.getElementById('customCake').style.display === 'block' ? 
+                    document.getElementById('customCake').value : input.value;
+            } else if (input.id === 'giftInput') {
+                answers.gift = input.value;
             }
             
             currentQ.classList.remove('active');
@@ -459,9 +463,9 @@
             }
         }
 
-        // Movie dropdown custom input
-        document.getElementById('movieInput').addEventListener('change', function() {
-            const customInput = document.getElementById('customMovie');
+        // Cake dropdown custom input
+        document.getElementById('cakeInput').addEventListener('change', function() {
+            const customInput = document.getElementById('customCake');
             if (this.value === 'Lainnya') {
                 customInput.style.display = 'block';
                 customInput.focus();
@@ -472,52 +476,56 @@
 
         // Show final screen
         function showFinalScreen() {
-            answers.travel = document.getElementById('travelInput').value;
+            answers.gift = document.getElementById('giftInput').value;
             
             const summary = document.getElementById('summary');
             summary.innerHTML = `
-                <h3>💕 Rencana Kita 💕</h3>
-                <p><strong>🌹 Kita bersama:</strong> ${answers.date || 'Segera! 😍'}</p>
-                <p><strong>🎬 Nonton:</strong> ${answers.movie || 'Film romantis apa aja! 💖'}</p>
-                <p><strong>✈️ Liburan:</strong> ${answers.travel || 'Ke mana aja bareng kamu! 🌍'}</p>
+                <h3>🎂 Birthday Plan Kita 💕</h3>
+                <p><strong>📅 Tanggal Rayain:</strong> ${answers.date || 'Secepatnya! 😍'}</p>
+                <p><strong>🍰 Rasa Kue Pilihanmu:</strong> ${answers.cake || 'Kue manis semanis kamu! 💖'}</p>
+                <p><strong>🎁 Kado Impian:</strong> ${answers.gift || 'Kejutan spesial dari aku! 🌍'}</p>
             `;
             
             document.getElementById('questionsSection').classList.add('hidden');
             document.getElementById('finalScreen').style.display = 'block';
+            celebrate(); // Rayakan lagi di halaman terakhir
         }
 
-        // Celebration effect
+        // Celebration effect (Confetti)
         function celebrate() {
             const celebration = document.getElementById('celebration');
             celebration.innerHTML = '';
             
             for (let i = 0; i < 100; i++) {
                 const confetti = document.createElement('div');
-                confetti.innerHTML = ['💖', '💕', '💗', '✨', '🌟'][Math.floor(Math.random() * 5)];
+                confetti.innerHTML = ['💖', '💕', '🎂', '✨', '🎈', '🥳', '🎁'][Math.floor(Math.random() * 7)];
                 confetti.style.position = 'fixed';
                 confetti.style.left = Math.random() * 100 + 'vw';
                 confetti.style.top = Math.random() * 100 + 'vh';
-                confetti.style.fontSize = '20px';
+                confetti.style.fontSize = '24px';
                 confetti.style.pointerEvents = 'none';
                 confetti.style.zIndex = '1000';
                 confetti.style.animation = `confettiFall ${Math.random() * 3 + 2}s linear forwards`;
                 celebration.appendChild(confetti);
             }
             
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes confettiFall {
-                    0% {
-                        transform: translateY(-100vh) rotate(0deg);
-                        opacity: 1;
+            if (!document.getElementById('confettiStyle')) {
+                const style = document.createElement('style');
+                style.id = 'confettiStyle';
+                style.textContent = `
+                    @keyframes confettiFall {
+                        0% {
+                            transform: translateY(-100vh) rotate(0deg);
+                            opacity: 1;
+                        }
+                        100% {
+                            transform: translateY(100vh) rotate(720deg);
+                            opacity: 0;
+                        }
                     }
-                    100% {
-                        transform: translateY(100vh) rotate(720deg);
-                        opacity: 0;
-                    }
-                }
-            `;
-            document.head.appendChild(style);
+                `;
+                document.head.appendChild(style);
+            }
         }
 
         // Fixed Screenshot function
@@ -527,7 +535,7 @@
             
             html2canvas(document.body).then(canvas => {
                 const link = document.createElement('a');
-                link.download = 'maisyafa-valentine-memory.png';
+                link.download = 'maisyafa-birthday-memory.png';
                 link.href = canvas.toDataURL();
                 link.click();
                 
